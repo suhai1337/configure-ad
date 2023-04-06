@@ -32,7 +32,7 @@ The brief explanation here shows the implementation of on-premises Active Direct
 <img src="https://i.imgur.com/d8my3Ai.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Set up two Virtual Machines(VM) in Azure, one being a Windows Server 2022 which will be our Domain Controller(DC) where we install Active Directory and another VM using Windows 10 which will act as our Client PC. Ensure they are in the same resource group and Vnet in Azure. Remote control the Client pc(Client) and ping the private ip of DC to look for a connection. If there is no connection, enable ICMPv4 in the local firewall of DC. 
 </p>
 <br />
 
@@ -40,7 +40,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/2g8rp7m.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Install Active Directory Domain Services on the DC and promote it as a DC setting up a new forest. This is when you will name a Domain for your Active Directory.This alters the remote control login to now read the login as a directory. Example sign in would be mydomain.com\Jane.Doe instead of just Jane Doe. In Active Directory Users and Computers, create Organizational units for Employees and Computers. Create multiple users of Admin level and regular level. Creating Admin level users requires changing the security group the user belongs in.
 </p>
 <br />
 
@@ -48,6 +48,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/GhR0lIQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+From Client, open system properties and click remote desktop. Allow domain users access to remote desktop. With this, all users in the domain mydomain.com can now access remote control of any computer that is also connected to the private network that the Domain Controller has been given.
 </p>
 <br />
